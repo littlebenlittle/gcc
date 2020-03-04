@@ -1,0 +1,6 @@
+ARG GCC_VERSION
+
+FROM gcr.io/hosting-38998/gcc:${GCC_VERSION}
+
+RUN apt-get update && apt-get install -y \
+    intltool

@@ -1,0 +1,16 @@
+
+substitutions:
+  _GCC_VERSION: '9.2'
+
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--file=Dockerfile.intltool'
+      - '--tag=gcr.io/${PROJECT_ID}/gcc:${_GCC_VERSION}-intltool'
+      - '--build-arg=GCC_VERSION=${_GCC_VERSION}'
+      - '.'
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/${PROJECT_ID}/gcc:${_GCC_VERSION}-intltool'
